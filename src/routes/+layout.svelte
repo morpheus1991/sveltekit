@@ -18,7 +18,7 @@
 
 	const userFetcher = async (user: UserInfo) => {
 		fetch(
-			`${dev ? PUBLIC_BASE_URL : `https://${process.env.VERCEL_URL}`}:${
+			`${dev ? PUBLIC_BASE_URL : `https://${process.env.VITE_VERCEL_URL}`}:${
 				dev ? 5175 : 4173
 			}/api/user`,
 			{
@@ -43,7 +43,7 @@
 		await handleSession(
 			event,
 			supabaseSession,
-			`${dev ? PUBLIC_BASE_URL : `https://${process.env.VERCEL_URL}`}:${
+			`${dev ? PUBLIC_BASE_URL : `https://${process.env.VITE_VERCEL_URL}`}:${
 				dev ? 5175 : 4173
 			}/api/cookie`
 		);

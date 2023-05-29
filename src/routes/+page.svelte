@@ -7,7 +7,9 @@
 	const clickHandler = () => {
 		console.log($session);
 		fetch(
-			`${dev ? PUBLIC_BASE_URL : `https://${process.env.VERCEL_URL}`}:${dev ? 5175 : 4173}/boards`,
+			`${dev ? PUBLIC_BASE_URL : `https://${process.env.VITE_VERCEL_URL}`}:${
+				dev ? 5175 : 4173
+			}/boards`,
 			{
 				method: 'POST',
 				headers: {
