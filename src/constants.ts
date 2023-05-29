@@ -1,3 +1,3 @@
-import { VITE_VERCEL_URL } from '$env/static/private';
+import { PUBLIC_VITE_VERCEL_URL } from '$env/static/public';
 
-export const baseUrl = VITE_VERCEL_URL;
+export const baseUrl = PUBLIC_VITE_VERCEL_URL;
