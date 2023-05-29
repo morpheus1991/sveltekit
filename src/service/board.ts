@@ -1,5 +1,4 @@
 import { dev } from '$app/environment';
-import { process.env.VITE_VERCEL_URL } from '$env/static/private';
 import type { BoardCreateBody } from '$lib/models/board';
 import { json } from '@sveltejs/kit';
 

@@ -1,7 +1,6 @@
 <script>
 	import { getSession } from '$lib/session';
 	import { dev } from '$app/environment';
-	import { process.env.VITE_VERCEL_URL } from '$env/static/private';
 
 	const { session } = getSession();
 	const clickHandler = () => {

@@ -5,7 +5,6 @@
 	import { page } from '$app/stores';
 	import { dev } from '$app/environment';
 	import type { UserInfo, UserWrapperInfo } from '$lib/models/user';
-	import { process.env.VITE_VERCEL_URL } from '$env/static/private';
 
 	/** @type {import('./$types').LayoutServerData} */
 	export let data;
