@@ -7,28 +7,24 @@
 	import { PUBLIC_BASE_URL } from '$env/static/public';
 	import type { UserInfo, UserWrapperInfo } from '$lib/models/user';
 
-	console.log('VITE_VERCEL_URL', process.env.VITE_VERCEL_URL);
-	console.log('VERCEL_URL', process.env.VERCEL_URL);
-	process.env.VITE_VERCEL_URL;
+	/** @type {import('./$types').LayoutServerData} */
+	export let data;
+
+	console.log('aa', data);
 	const { session } = getSession();
 
 	/* hydrate the store on data refresh */
 	$session = $page.data.user;
 
 	const userFetcher = async (user: UserInfo) => {
-		fetch(
-			`${dev ? PUBLIC_BASE_URL : `https://${process.env.VITE_VERCEL_URL}`}:${
-				dev ? 5175 : 4173
-			}/api/user`,
-			{
-				method: 'POST', // 요청 메소드 설정
-				headers: {
-					'Content-Type': 'application/json' // 컨텐츠 타입 헤더 설정
-					// 필요한 경우 추가적인 헤더를 여기에 입력하세요.
-				},
-				body: JSON.stringify({ user }) // JSON 형태로 데이터를 보냅니다.
-			}
-		)
+		fetch(`${PUBLIC_BASE_URL}:${dev ? 5175 : 4173}/api/user`, {
+			method: 'POST', // 요청 메소드 설정
+			headers: {
+				'Content-Type': 'application/json' // 컨텐츠 타입 헤더 설정
+				// 필요한 경우 추가적인 헤더를 여기에 입력하세요.
+			},
+			body: JSON.stringify({ user }) // JSON 형태로 데이터를 보냅니다.
+		})
 			.then((response) => {
 				if (!response.ok) {
 					throw new Error(`HTTP error! status: ${response.status}`);
@@ -42,9 +38,7 @@
 		await handleSession(
 			event,
 			supabaseSession,
-			`${dev ? PUBLIC_BASE_URL : `https://${process.env.VITE_VERCEL_URL}`}:${
-				dev ? 5175 : 4173
-			}/api/cookie`
+			`${PUBLIC_BASE_URL}:${dev ? 5175 : 4173}/api/cookie`
 		);
 		if (event === 'SIGNED_OUT') {
 			console.log('SIGNED_OUT');
