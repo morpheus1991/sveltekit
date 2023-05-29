@@ -1,1 +1,1 @@
-export const baseUrl = process.env.VERCEL_URL;
+export const baseUrl = process.env.VITE_VERCEL_URL;
