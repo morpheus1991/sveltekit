@@ -1,2 +1,1 @@
-export const baseUrl =
-	process.env.BASE_URL || process.env.VERCEL_URL || process.env.VITE_VERCEL_URL;
+export const baseUrl = import.meta.env.VITE_BASE_URL || import.meta.env.VITE_VERCEL_URL;
