@@ -28,7 +28,9 @@ export const signIn = async (provider: string) => {
 		const { error } = await supabaseBrowserClient.auth.signInWithOAuth({
 			provider: provider as Provider,
 			options: {
-				redirectTo: `${dev ? PUBLIC_BASE_URL : PUBLIC_VERCEL_URL}:${dev ? 5175 : 4173}/login`
+				redirectTo: `${dev ? PUBLIC_BASE_URL : `https://${PUBLIC_VERCEL_URL}`}:${
+					dev ? 5175 : 4173
+				}/login`
 			}
 		});
 		if (error) console.error(error);

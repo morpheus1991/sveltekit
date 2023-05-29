@@ -5,8 +5,10 @@ import { json } from '@sveltejs/kit';
 
 export const getBoards = async (id?: string) => {
 	const endPoint = id
-		? `${dev ? PUBLIC_BASE_URL : PUBLIC_VERCEL_URL}:${dev ? 5175 : 4173}/api/boards/${id}`
-		: `${dev ? PUBLIC_BASE_URL : PUBLIC_VERCEL_URL}:${dev ? 5175 : 4173}/api/boards`;
+		? `${dev ? PUBLIC_BASE_URL : `https://${PUBLIC_VERCEL_URL}`}:${
+				dev ? 5175 : 4173
+		  }/api/boards/${id}`
+		: `${dev ? PUBLIC_BASE_URL : `https://${PUBLIC_VERCEL_URL}`}:${dev ? 5175 : 4173}/api/boards`;
 
 	console.log('endPoint', endPoint);
 
@@ -21,7 +23,9 @@ export const getBoards = async (id?: string) => {
 };
 
 export const createBoard = async (board: BoardCreateBody) => {
-	const endPoint = `${dev ? PUBLIC_BASE_URL : PUBLIC_VERCEL_URL}:${dev ? 5175 : 4173}/api/boards`;
+	const endPoint = `${dev ? PUBLIC_BASE_URL : `https://${PUBLIC_VERCEL_URL}`}:${
+		dev ? 5175 : 4173
+	}/api/boards`;
 	console.log('endPoint', endPoint);
 	return await fetch(endPoint, {
 		method: 'POST',

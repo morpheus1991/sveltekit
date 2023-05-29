@@ -6,7 +6,7 @@
 	const { session } = getSession();
 	const clickHandler = () => {
 		console.log($session);
-		fetch(`${dev ? PUBLIC_BASE_URL : NEXT_PUBLIC_VERCEL_URL}:${dev ? 5175 : 4173}/boards`, {
+		fetch(`${dev ? PUBLIC_BASE_URL : `https://${PUBLIC_VERCEL_URL}`}:${dev ? 5175 : 4173}/boards`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json' // 컨텐츠 타입 헤더 설정
