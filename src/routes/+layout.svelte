@@ -7,7 +7,7 @@
 	import type { UserInfo, UserWrapperInfo } from '$lib/models/user';
 
 	/** @type {import('./$types').LayoutServerData} */
-	export let data;
+	export let vercel_data;
 	console.log(data);
 
 	console.log('process.env.BASE_URL', process.env.BASE_URL);
@@ -40,7 +40,7 @@
 		await handleSession(
 			event,
 			supabaseSession,
-			`${process.env.VITE_VERCEL_URL}:${dev ? 5175 : 4173}/api/cookie`
+			`${vercel_data.VERCEL_URL}:${dev ? 5175 : 4173}/api/cookie`
 		);
 		if (event === 'SIGNED_OUT') {
 			console.log('SIGNED_OUT');
