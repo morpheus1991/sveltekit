@@ -10,7 +10,9 @@
 	/** @type {import('./$types').LayoutServerData} */
 	export let data;
 
-	console.log('aa', data);
+	console.log('process.env.BASE_URL', process.env.BASE_URL);
+	console.log('process.env.VERCEL_URL', process.env.VERCEL_URL);
+	console.log('process.env.VITE_VERCEL_URL', process.env.VITE_VERCEL_URL);
 	const { session } = getSession();
 
 	/* hydrate the store on data refresh */
