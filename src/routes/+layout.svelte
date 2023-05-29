@@ -13,7 +13,7 @@
 	$session = $page.data.user;
 
 	const userFetcher = async (user: UserInfo) => {
-		fetch(`${PUBLIC_BASE_URL}:${dev ? 5175 : 4173}/api/user`, {
+		fetch(`${PUBLIC_BASE_URL}:${dev ? 5173 : 4173}/api/user`, {
 			method: 'POST', // 요청 메소드 설정
 			headers: {
 				'Content-Type': 'application/json' // 컨텐츠 타입 헤더 설정
@@ -34,7 +34,7 @@
 		await handleSession(
 			event,
 			supabaseSession,
-			`${PUBLIC_BASE_URL}:${dev ? 5175 : 4173}/api/cookie`
+			`${PUBLIC_BASE_URL}:${dev ? 5173 : 4173}/api/cookie`
 		);
 		if (event === 'SIGNED_OUT') {
 			console.log('SIGNED_OUT');
