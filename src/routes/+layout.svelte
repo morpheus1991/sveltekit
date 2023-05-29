@@ -5,7 +5,7 @@
 	import { page } from '$app/stores';
 	import { dev } from '$app/environment';
 	import type { UserInfo, UserWrapperInfo } from '$lib/models/user';
-	import { VITE_VERCEL_URL } from '$env/static/private';
+	import { process.env.VITE_VERCEL_URL } from '$env/static/private';
 
 	/** @type {import('./$types').LayoutServerData} */
 	export let data;
@@ -17,7 +17,7 @@
 	$session = $page.data.user;
 
 	const userFetcher = async (user: UserInfo) => {
-		fetch(`${VITE_VERCEL_URL}:${dev ? 5175 : 4173}/api/user`, {
+		fetch(`${process.env.VITE_VERCEL_URL}:${dev ? 5175 : 4173}/api/user`, {
 			method: 'POST', // 요청 메소드 설정
 			headers: {
 				'Content-Type': 'application/json' // 컨텐츠 타입 헤더 설정
@@ -38,7 +38,7 @@
 		await handleSession(
 			event,
 			supabaseSession,
-			`${VITE_VERCEL_URL}:${dev ? 5175 : 4173}/api/cookie`
+			`${process.env.VITE_VERCEL_URL}:${dev ? 5175 : 4173}/api/cookie`
 		);
 		if (event === 'SIGNED_OUT') {
 			console.log('SIGNED_OUT');
