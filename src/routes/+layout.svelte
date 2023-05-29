@@ -5,7 +5,7 @@
 	import { page } from '$app/stores';
 	import { dev } from '$app/environment';
 	import type { UserInfo, UserWrapperInfo } from '$lib/models/user';
-	import { baseUrl } from '../constants';
+	import { rocess.env.VITE_VERCEL_URL } from '../constants';
 
 	/** @type {import('./$types').LayoutServerData} */
 	export let data;
@@ -20,7 +20,7 @@
 	$session = $page.data.user;
 
 	const userFetcher = async (user: UserInfo) => {
-		fetch(`${baseUrl}:${dev ? 5175 : 4173}/api/user`, {
+		fetch(`${rocess.env.VITE_VERCEL_URL}:${dev ? 5175 : 4173}/api/user`, {
 			method: 'POST', // 요청 메소드 설정
 			headers: {
 				'Content-Type': 'application/json' // 컨텐츠 타입 헤더 설정
@@ -38,7 +38,7 @@
 			.catch((error) => console.error('Error:', error)); // 에러가 발생하면 콘솔에 출력합니다.
 	};
 	supabaseBrowserClient.auth.onAuthStateChange(async (event, supabaseSession) => {
-		await handleSession(event, supabaseSession, `${baseUrl}:${dev ? 5175 : 4173}/api/cookie`);
+		await handleSession(event, supabaseSession, `${rocess.env.VITE_VERCEL_URL}:${dev ? 5175 : 4173}/api/cookie`);
 		if (event === 'SIGNED_OUT') {
 			console.log('SIGNED_OUT');
 			$session = null;
