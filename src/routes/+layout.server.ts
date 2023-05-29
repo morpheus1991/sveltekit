@@ -4,11 +4,11 @@
 // 		user
 // 	};
 // };
-import { VERCEL_COMMIT_REF } from '$env/dynamic/private';
+import { env } from '$env/dynamic/private';
 
 /** @type {import('./$types').LayoutServerLoad} */
 export function load() {
 	return {
-		deploymentGitBranch: VERCEL_COMMIT_REF
+		deploymentGitBranch: env
 	};
 }
