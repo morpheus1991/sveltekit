@@ -1,12 +1,12 @@
 import { dev } from '$app/environment';
-import { PUBLIC_BASE_URL } from '$env/static/public';
+import { VITE_VERCEL_URL } from '$env/static/public';
 import type { BoardCreateBody } from '$lib/models/board';
 import { json } from '@sveltejs/kit';
 
 export const getBoards = async (id?: string) => {
 	const endPoint = id
-		? `${PUBLIC_BASE_URL}:${dev ? 5175 : 4173}/api/boards/${id}`
-		: `${PUBLIC_BASE_URL}:${dev ? 5175 : 4173}/api/boards`;
+		? `${VITE_VERCEL_URL}:${dev ? 5175 : 4173}/api/boards/${id}`
+		: `${VITE_VERCEL_URL}:${dev ? 5175 : 4173}/api/boards`;
 
 	console.log('endPoint', endPoint);
 
@@ -21,7 +21,7 @@ export const getBoards = async (id?: string) => {
 };
 
 export const createBoard = async (board: BoardCreateBody) => {
-	const endPoint = `${PUBLIC_BASE_URL}:${dev ? 5175 : 4173}/api/boards`;
+	const endPoint = `${VITE_VERCEL_URL}:${dev ? 5175 : 4173}/api/boards`;
 	console.log('endPoint', endPoint);
 	return await fetch(endPoint, {
 		method: 'POST',

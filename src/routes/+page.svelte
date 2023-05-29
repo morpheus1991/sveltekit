@@ -1,12 +1,12 @@
 <script>
-	import { PUBLIC_BASE_URL } from '$env/static/public';
+	import { VITE_VERCEL_URL } from '$env/static/public';
 	import { getSession } from '$lib/session';
 	import { dev } from '$app/environment';
 
 	const { session } = getSession();
 	const clickHandler = () => {
 		console.log($session);
-		fetch(`${PUBLIC_BASE_URL}:${dev ? 5175 : 4173}/boards`, {
+		fetch(`${VITE_VERCEL_URL}:${dev ? 5175 : 4173}/boards`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json' // 컨텐츠 타입 헤더 설정
