@@ -2,10 +2,10 @@ import { dev } from '$app/environment';
 import type { BoardCreateBody } from '$lib/models/board';
 import { json } from '@sveltejs/kit';
 
-export const getBoards = async (id?: string) => {
+export const getBoards = async (url, id?: string) => {
 	const endPoint = id
-		? `${process.env.VERCEL_URL}:${dev ? 5175 : 4173}/api/boards/${id}`
-		: `${process.env.VERCEL_URL}:${dev ? 5175 : 4173}/api/boards`;
+		? `${url}:${dev ? 5175 : 4173}/api/boards/${id}`
+		: `${url}:${dev ? 5175 : 4173}/api/boards`;
 
 	console.log('endPoint', endPoint);
 
@@ -19,8 +19,8 @@ export const getBoards = async (id?: string) => {
 		.catch((error) => console.error('Error:', error)); // 에러가 발생하면 콘솔에 출력합니다.
 };
 
-export const createBoard = async (board: BoardCreateBody) => {
-	const endPoint = `${process.env.VERCEL_URL}:${dev ? 5175 : 4173}/api/boards`;
+export const createBoard = async (url, board: BoardCreateBody) => {
+	const endPoint = `${url}:${dev ? 5175 : 4173}/api/boards`;
 	console.log('endPoint', endPoint);
 	return await fetch(endPoint, {
 		method: 'POST',
