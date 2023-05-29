@@ -7,10 +7,9 @@
 	import { PUBLIC_BASE_URL } from '$env/static/public';
 	import type { UserInfo, UserWrapperInfo } from '$lib/models/user';
 
-	/** @type {import('./$types').LayoutServerData} */
-	export let data;
-
-	console.log('aa', data);
+	console.log('VITE_VERCEL_URL', process.env.VITE_VERCEL_URL);
+	console.log('VERCEL_URL', process.env.VERCEL_URL);
+	process.env.VITE_VERCEL_URL;
 	const { session } = getSession();
 
 	/* hydrate the store on data refresh */
