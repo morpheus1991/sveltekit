@@ -1,12 +1,12 @@
 import { dev } from '$app/environment';
 import type { BoardCreateBody } from '$lib/models/board';
 import { json } from '@sveltejs/kit';
-import { rocess.env.VITE_VERCEL_URL } from '../constants';
+import { process.env.VITE_VERCEL_URL } from '../constants';
 
 export const getBoards = async (id?: string) => {
 	const endPoint = id
-		? `${rocess.env.VITE_VERCEL_URL}:${dev ? 5175 : 4173}/api/boards/${id}`
-		: `${rocess.env.VITE_VERCEL_URL}:${dev ? 5175 : 4173}/api/boards`;
+		? `${process.env.VITE_VERCEL_URL}:${dev ? 5175 : 4173}/api/boards/${id}`
+		: `${process.env.VITE_VERCEL_URL}:${dev ? 5175 : 4173}/api/boards`;
 
 	console.log('endPoint', endPoint);
 
@@ -21,7 +21,7 @@ export const getBoards = async (id?: string) => {
 };
 
 export const createBoard = async (board: BoardCreateBody) => {
-	const endPoint = `${rocess.env.VITE_VERCEL_URL}:${dev ? 5175 : 4173}/api/boards`;
+	const endPoint = `${process.env.VITE_VERCEL_URL}:${dev ? 5175 : 4173}/api/boards`;
 	console.log('endPoint', endPoint);
 	return await fetch(endPoint, {
 		method: 'POST',

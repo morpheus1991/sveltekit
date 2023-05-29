@@ -1,12 +1,12 @@
 <script>
 	import { getSession } from '$lib/session';
 	import { dev } from '$app/environment';
-	import { rocess.env.VITE_VERCEL_URL } from '../constants';
+	import { process.env.VITE_VERCEL_URL } from '../constants';
 
 	const { session } = getSession();
 	const clickHandler = () => {
 		console.log($session);
-		fetch(`${rocess.env.VITE_VERCEL_URL}:${dev ? 5175 : 4173}/boards`, {
+		fetch(`${process.env.VITE_VERCEL_URL}:${dev ? 5175 : 4173}/boards`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json' // 컨텐츠 타입 헤더 설정

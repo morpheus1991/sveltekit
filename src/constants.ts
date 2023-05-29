@@ -1,1 +1,1 @@
-// export const rocess.env.VITE_VERCEL_URL = process.env.VITE_VERCEL_URL;
+// export const process.env.VITE_VERCEL_URL = pprocess.env.VITE_VERCEL_URL;
