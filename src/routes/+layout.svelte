@@ -5,7 +5,6 @@
 	import { page } from '$app/stores';
 	import { dev } from '$app/environment';
 	import type { UserInfo, UserWrapperInfo } from '$lib/models/user';
-	import { process.env.VITE_VERCEL_URL } from '../constants';
 
 	/** @type {import('./$types').LayoutServerData} */
 	export let data;
@@ -13,7 +12,7 @@
 
 	console.log('process.env.BASE_URL', process.env.BASE_URL);
 	console.log('process.env.VERCEL_URL', process.env.VERCEL_URL);
-	console.log('pprocess.env.VITE_VERCEL_URL', pprocess.env.VITE_VERCEL_URL);
+	console.log('process.env.VITE_VERCEL_URL', process.env.VITE_VERCEL_URL);
 	const { session } = getSession();
 
 	/* hydrate the store on data refresh */
@@ -38,7 +37,11 @@
 			.catch((error) => console.error('Error:', error)); // 에러가 발생하면 콘솔에 출력합니다.
 	};
 	supabaseBrowserClient.auth.onAuthStateChange(async (event, supabaseSession) => {
-		await handleSession(event, supabaseSession, `${process.env.VITE_VERCEL_URL}:${dev ? 5175 : 4173}/api/cookie`);
+		await handleSession(
+			event,
+			supabaseSession,
+			`${process.env.VITE_VERCEL_URL}:${dev ? 5175 : 4173}/api/cookie`
+		);
 		if (event === 'SIGNED_OUT') {
 			console.log('SIGNED_OUT');
 			$session = null;

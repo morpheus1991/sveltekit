@@ -1,7 +1,6 @@
 import { dev } from '$app/environment';
 import type { BoardCreateBody } from '$lib/models/board';
 import { json } from '@sveltejs/kit';
-import { process.env.VITE_VERCEL_URL } from '../constants';
 
 export const getBoards = async (id?: string) => {
 	const endPoint = id
