@@ -4,7 +4,7 @@
 	import { supabaseBrowserClient, signOut } from '$lib/supabase';
 	import { page } from '$app/stores';
 	import { dev } from '$app/environment';
-	import { PUBLIC_BASE_URL, PUBLIC_VERCEL_URL } from '$env/static/public';
+	import { PUBLIC_BASE_URL } from '$env/static/public';
 	import type { UserInfo, UserWrapperInfo } from '$lib/models/user';
 
 	/** @type {import('./$types').LayoutServerData} */
@@ -18,7 +18,9 @@
 
 	const userFetcher = async (user: UserInfo) => {
 		fetch(
-			`${dev ? PUBLIC_BASE_URL : `https://${PUBLIC_VERCEL_URL}`}:${dev ? 5175 : 4173}/api/user`,
+			`${dev ? PUBLIC_BASE_URL : `https://${process.env.VERCEL_URL}`}:${
+				dev ? 5175 : 4173
+			}/api/user`,
 			{
 				method: 'POST', // 요청 메소드 설정
 				headers: {
@@ -41,7 +43,9 @@
 		await handleSession(
 			event,
 			supabaseSession,
-			`${dev ? PUBLIC_BASE_URL : `https://${PUBLIC_VERCEL_URL}`}:${dev ? 5175 : 4173}/api/cookie`
+			`${dev ? PUBLIC_BASE_URL : `https://${process.env.VERCEL_URL}`}:${
+				dev ? 5175 : 4173
+			}/api/cookie`
 		);
 		if (event === 'SIGNED_OUT') {
 			console.log('SIGNED_OUT');

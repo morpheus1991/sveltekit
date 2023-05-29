@@ -1,10 +1,5 @@
 import { createClient, SupabaseClient, type Provider } from '@supabase/supabase-js';
-import {
-	PUBLIC_BASE_URL,
-	PUBLIC_SUPABASE_ANON_KEY,
-	PUBLIC_SUPABASE_URL,
-	PUBLIC_VERCEL_URL
-} from '$env/static/public';
+import { PUBLIC_BASE_URL, PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL } from '$env/static/public';
 import { dev } from '$app/environment';
 
 export const supabaseBrowserClient = createClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY);
@@ -28,7 +23,7 @@ export const signIn = async (provider: string) => {
 		const { error } = await supabaseBrowserClient.auth.signInWithOAuth({
 			provider: provider as Provider,
 			options: {
-				redirectTo: `${dev ? PUBLIC_BASE_URL : `https://${PUBLIC_VERCEL_URL}`}:${
+				redirectTo: `${dev ? PUBLIC_BASE_URL : `https://${process.env.VERCEL_URL}`}:${
 					dev ? 5175 : 4173
 				}/login`
 			}
