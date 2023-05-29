@@ -4,7 +4,7 @@
 // 		user
 // 	};
 // };
-import { VERCEL_COMMIT_REF } from '$env/static/private';
+import { VERCEL_COMMIT_REF } from '$env/dynamic/private';
 
 /** @type {import('./$types').LayoutServerLoad} */
 export function load() {
