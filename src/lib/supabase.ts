@@ -1,6 +1,7 @@
 import { createClient, SupabaseClient, type Provider } from '@supabase/supabase-js';
-import { VITE_VERCEL_URL, PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL } from '$env/static/public';
+import { PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL } from '$env/static/public';
 import { dev } from '$app/environment';
+import { VITE_VERCEL_URL } from '$env/static/private';
 
 export const supabaseBrowserClient = createClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY);
 

@@ -4,8 +4,8 @@
 	import { supabaseBrowserClient, signOut } from '$lib/supabase';
 	import { page } from '$app/stores';
 	import { dev } from '$app/environment';
-	import { VITE_VERCEL_URL } from '$env/static/public';
 	import type { UserInfo, UserWrapperInfo } from '$lib/models/user';
+	import { VITE_VERCEL_URL } from '$env/static/private';
 
 	/** @type {import('./$types').LayoutServerData} */
 	export let data;

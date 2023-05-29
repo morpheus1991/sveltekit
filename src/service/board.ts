@@ -1,5 +1,5 @@
 import { dev } from '$app/environment';
-import { VITE_VERCEL_URL } from '$env/static/public';
+import { VITE_VERCEL_URL } from '$env/static/private';
 import type { BoardCreateBody } from '$lib/models/board';
 import { json } from '@sveltejs/kit';
 
