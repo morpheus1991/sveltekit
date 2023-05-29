@@ -1,11 +1,12 @@
 <script>
 	import { getSession } from '$lib/session';
 	import { dev } from '$app/environment';
+	import { baseUrl } from '../constants';
 
 	const { session } = getSession();
 	const clickHandler = () => {
 		console.log($session);
-		fetch(`${process.env.VITE_VERCEL_URL}:${dev ? 5175 : 4173}/boards`, {
+		fetch(`${baseUrl}:${dev ? 5175 : 4173}/boards`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json' // 컨텐츠 타입 헤더 설정
