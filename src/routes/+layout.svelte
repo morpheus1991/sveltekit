@@ -5,11 +5,12 @@
 	import { page } from '$app/stores';
 	import { dev } from '$app/environment';
 	import type { UserInfo, UserWrapperInfo } from '$lib/models/user';
+	import { testUrl } from '../constants';
 
 	/** @type {import('./$types').LayoutServerData} */
 	export let data;
 	console.log('data.deploymentGitBranch', data.deploymentGitBranch);
-
+	console.log('testUrl', testUrl);
 	console.log('process.env.BASE_URL', process.env.BASE_URL);
 	console.log('process.env.VERCEL_URL', process.env.VERCEL_URL);
 	console.log('process.env.VITE_VERCEL_URL', process.env.VITE_VERCEL_URL);
