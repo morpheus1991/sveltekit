@@ -6,8 +6,6 @@
 	import { dev } from '$app/environment';
 	import type { UserInfo, UserWrapperInfo } from '$lib/models/user';
 	import { testUrl } from '../constants';
-	import { writable } from 'svelte/store';
-	import { baseUrl } from '../stores';
 
 	/** @type {import('./$types').LayoutServerData} */
 	export let data;
