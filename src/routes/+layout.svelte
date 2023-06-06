@@ -5,6 +5,7 @@
 	import { page } from '$app/stores';
 	import { dev } from '$app/environment';
 	import type { UserInfo, UserWrapperInfo } from '$lib/models/user';
+	import { onMount } from 'svelte/types/runtime/internal/lifecycle';
 
 	/** @type {import('./$types').LayoutServerData} */
 	export let data;
@@ -15,6 +16,7 @@
 
 	const { session } = getSession();
 
+	onMount(() => {});
 	/* hydrate the store on data refresh */
 	$session = $page.data.user;
 
@@ -36,26 +38,28 @@
 			.then((data) => console.log(data)) // 응답 데이터를 콘솔에 출력합니다.
 			.catch((error) => console.error('Error:', error)); // 에러가 발생하면 콘솔에 출력합니다.
 	};
-	supabaseBrowserClient.auth.onAuthStateChange(async (event, supabaseSession) => {
-		console.log('event', event);
-		console.log('supabaseSession', supabaseSession);
-		console.log('event', event);
-		await handleSession(event, supabaseSession, `${baseUrl}/api/cookie`);
-		if (event === 'SIGNED_OUT') {
-			console.log('SIGNED_OUT');
-			$session = null;
-			goto('/');
-		}
-		if (!supabaseSession) return;
-		if (event === 'SIGNED_IN') {
-			console.log('SIGNED_IN');
-			$session = supabaseSession.user as unknown as UserInfo;
-			console.log('$session', $session);
-			console.log('userFetcher call');
-			userFetcher(supabaseSession.user as unknown as UserInfo);
-			goto('/');
-		}
-	});
+	if (!session) {
+		supabaseBrowserClient.auth.onAuthStateChange(async (event, supabaseSession) => {
+			console.log('event', event);
+			console.log('supabaseSession', supabaseSession);
+			console.log('event', event);
+			await handleSession(event, supabaseSession, `${baseUrl}/api/cookie`);
+			if (event === 'SIGNED_OUT') {
+				console.log('SIGNED_OUT');
+				$session = null;
+				goto('/');
+			}
+			if (!supabaseSession) return;
+			if (event === 'SIGNED_IN') {
+				console.log('SIGNED_IN');
+				$session = supabaseSession.user as unknown as UserInfo;
+				console.log('$session', $session);
+				console.log('userFetcher call');
+				userFetcher(supabaseSession.user as unknown as UserInfo);
+				goto('/');
+			}
+		});
+	}
 </script>
 
 <nav style="border: solid; border-width: 0 0 2px; padding-bottom: 5px;">
