@@ -5,7 +5,7 @@ import { json } from '@sveltejs/kit';
 export const getBoards = async (url: string, id?: string) => {
 	const endPoint = id ? `${url}/api/boards/${id}` : `${url}/api/boards`;
 
-	console.log('endPoint', endPoint);
+	console.log('endPoint!', endPoint);
 
 	return await fetch(endPoint)
 		.then((response) => {
