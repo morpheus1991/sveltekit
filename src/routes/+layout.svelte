@@ -12,6 +12,8 @@
 	/** @type {import('./$types').LayoutServerData} */
 	export let data;
 
+	console.log('data', data);
+
 	$baseUrl = `https://${data.deploymentGitBranch.VERCEL_URL}:${dev ? 5175 : 4173}`;
 
 	console.log(`$baseUrl`, $baseUrl);
