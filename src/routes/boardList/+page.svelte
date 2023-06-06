@@ -2,6 +2,8 @@
 	import { onMount } from 'svelte';
 	import { getBoards } from '../../service/board';
 	import { dev } from '$app/environment';
+	import { getSession } from '$lib/session';
+	import { goto } from '$app/navigation';
 	/** @type {import('./$types').LayoutServerData} */
 	export let data;
 
@@ -11,6 +13,9 @@
 	const baseUrl = `https://${data.deploymentGitBranch.VERCEL_URL}`;
 	console.log(baseUrl);
 	onMount(async () => {
+		if (!getSession()) {
+			goto('/');
+		}
 		const data = await getBoards(baseUrl);
 		console.log(data);
 		boards = data;

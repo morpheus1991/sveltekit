@@ -17,8 +17,5 @@
 	style="margin-top: 12px;"
 	on:click={() => {
 		signIn('google', baseUrl);
-		// COLLECTION.insertOne({$session})
-		console.log('session', $session);
-		// fetch()
 	}}>Github Login</button
 >
