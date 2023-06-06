@@ -3,9 +3,7 @@ import type { BoardCreateBody } from '$lib/models/board';
 import { json } from '@sveltejs/kit';
 
 export const getBoards = async (url: string, id?: string) => {
-	const endPoint = id
-		? `${url}:${dev ? 5175 : 4173}/api/boards/${id}`
-		: `${url}:${dev ? 5175 : 4173}/api/boards`;
+	const endPoint = id ? `${url}/api/boards/${id}` : `${url}/api/boards`;
 
 	console.log('endPoint', endPoint);
 
@@ -20,7 +18,7 @@ export const getBoards = async (url: string, id?: string) => {
 };
 
 export const createBoard = async (url, board: BoardCreateBody) => {
-	const endPoint = `${url}:${dev ? 5175 : 4173}/api/boards`;
+	const endPoint = `${url}/api/boards`;
 	console.log('endPoint', endPoint);
 	return await fetch(endPoint, {
 		method: 'POST',
