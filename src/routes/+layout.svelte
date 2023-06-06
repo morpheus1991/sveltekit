@@ -8,7 +8,7 @@
 
 	/** @type {import('./$types').LayoutServerData} */
 	export let data;
-	console.log(data.deploymentGitBranch);
+	console.log('data.deploymentGitBranch', data.deploymentGitBranch);
 
 	console.log('process.env.BASE_URL', process.env.BASE_URL);
 	console.log('process.env.VERCEL_URL', process.env.VERCEL_URL);
