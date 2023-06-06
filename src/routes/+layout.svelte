@@ -43,7 +43,7 @@
 		await handleSession(
 			event,
 			supabaseSession,
-			`${data.deploymentGitBranch.VERCEL_URL}:${dev ? 5175 : 4173}/api/cookie`
+			`https://${data.deploymentGitBranch.VERCEL_URL}:${dev ? 5175 : 4173}/api/cookie`
 		);
 		if (event === 'SIGNED_OUT') {
 			console.log('SIGNED_OUT');
