@@ -16,6 +16,7 @@ const initSession = (): SessionContext => {
 };
 
 export const getSession = (): SessionContext => {
+	console.log('getSession');
 	return hasContext(keys.session) ? getContext<SessionContext>(keys.session) : initSession();
 };
 

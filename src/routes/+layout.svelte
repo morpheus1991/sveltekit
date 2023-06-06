@@ -5,7 +5,6 @@
 	import { page } from '$app/stores';
 	import { dev } from '$app/environment';
 	import type { UserInfo, UserWrapperInfo } from '$lib/models/user';
-	import { testUrl } from '../constants';
 
 	/** @type {import('./$types').LayoutServerData} */
 	export let data;
@@ -14,22 +13,10 @@
 
 	const baseUrl = `https://${data.deploymentGitBranch.VERCEL_URL}:${dev ? 5175 : ''}`;
 
-	console.log(`baseUrl`, baseUrl);
-	console.log('data.deploymentGitBranch', data.deploymentGitBranch);
-	console.log('testUrl', testUrl);
-	console.log('process.env.BASE_URL', process.env.BASE_URL);
-	console.log('process.env.VERCEL_URL', process.env.VERCEL_URL);
-	console.log('process.env.VITE_VERCEL_URL', process.env.VITE_VERCEL_URL);
-	console.log('pimport.meta.env.VERCEL_URL', import.meta.env.VERCEL_URL);
-
 	const { session } = getSession();
 
 	/* hydrate the store on data refresh */
 	$session = $page.data.user;
-
-	$: {
-		console.log('세션 변경댐', $session);
-	}
 
 	const userFetcher = async (user: UserInfo) => {
 		fetch(`${baseUrl}/api/user`, {
