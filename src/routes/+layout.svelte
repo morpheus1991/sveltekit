@@ -5,7 +5,6 @@
 	import { page } from '$app/stores';
 	import { dev } from '$app/environment';
 	import type { UserInfo, UserWrapperInfo } from '$lib/models/user';
-	import { onMount } from 'svelte/types/runtime/internal/lifecycle';
 
 	/** @type {import('./$types').LayoutServerData} */
 	export let data;
@@ -15,8 +14,6 @@
 	const baseUrl = `https://${data.deploymentGitBranch.VERCEL_URL}:${dev ? 5175 : ''}`;
 
 	const { session } = getSession();
-
-	onMount(() => {});
 	/* hydrate the store on data refresh */
 	$session = $page.data.user;
 
