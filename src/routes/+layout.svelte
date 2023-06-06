@@ -62,8 +62,7 @@
 		if (event === 'SIGNED_IN') {
 			$session = supabaseSession.user as unknown as UserInfo;
 			userFetcher(supabaseSession.user as unknown as UserInfo);
-
-			goto('/app');
+			goto('/');
 		}
 	});
 </script>
