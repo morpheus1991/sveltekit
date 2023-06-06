@@ -5,18 +5,17 @@
 	/** @type {import('./$types').LayoutServerData} */
 	export let data;
 
-	console.log('board List data 테스트', data);
-	// let boards = [];
-	// onMount(async () => {
-	// 	const data = await getBoards();
-	// 	console.log(data);
-	// 	boards = data;
-	// });
+	console.log('board List data 테스트', data.);
+	let boards = [];
+	onMount(async () => {
+		const data = await getBoards(data.VERCEL_URL);
+		console.log(data);
+		boards = data;
+	});
 </script>
 
-<!-- 
 {#each boards as board}
 	<div>{board._id}</div>
-{/each} -->
+{/each}
 
 <a href="./boardList/add">글쓰기</a>
