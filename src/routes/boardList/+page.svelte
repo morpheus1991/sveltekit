@@ -8,7 +8,7 @@
 	console.log('data', data);
 	let boards = [];
 
-	const baseUrl = `https://${data.deploymentGitBranch.VERCEL_URL}:${dev ? 5175 : 4173}`;
+	const baseUrl = `${data.deploymentGitBranch.VERCEL_URL}:${dev ? 5175 : 4173}`;
 	onMount(async () => {
 		const data = await getBoards(baseUrl);
 		console.log(data);
