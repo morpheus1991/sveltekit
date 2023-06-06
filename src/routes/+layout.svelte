@@ -56,13 +56,13 @@
 		if (event === 'SIGNED_OUT') {
 			console.log('SIGNED_OUT');
 			$session = null;
-			goto('/');
+			// goto('/');
 		}
 		if (!supabaseSession) return;
 		if (event === 'SIGNED_IN') {
 			$session = supabaseSession.user as unknown as UserInfo;
 			userFetcher(supabaseSession.user as unknown as UserInfo);
-			goto('/');
+			// goto('/');
 		}
 	});
 </script>
