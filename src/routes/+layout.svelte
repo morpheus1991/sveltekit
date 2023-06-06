@@ -6,9 +6,14 @@
 	import { dev } from '$app/environment';
 	import type { UserInfo, UserWrapperInfo } from '$lib/models/user';
 	import { testUrl } from '../constants';
+	import { writable } from 'svelte/store';
 
 	/** @type {import('./$types').LayoutServerData} */
 	export let data;
+
+	const envStore = writable({});
+	$envStore = `https://${data.deploymentGitBranch.VERCEL_URL}:${dev ? 5175 : 4173}`;
+
 	console.log('data.deploymentGitBranch', data.deploymentGitBranch);
 	console.log('testUrl', testUrl);
 	console.log('process.env.BASE_URL', process.env.BASE_URL);
@@ -40,11 +45,7 @@
 			.catch((error) => console.error('Error:', error)); // 에러가 발생하면 콘솔에 출력합니다.
 	};
 	supabaseBrowserClient.auth.onAuthStateChange(async (event, supabaseSession) => {
-		await handleSession(
-			event,
-			supabaseSession,
-			`https://${data.deploymentGitBranch.VERCEL_URL}:${dev ? 5175 : 4173}/api/cookie`
-		);
+		await handleSession(event, supabaseSession, `${$envStore}/api/cookie`);
 		if (event === 'SIGNED_OUT') {
 			console.log('SIGNED_OUT');
 			$session = null;
