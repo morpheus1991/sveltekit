@@ -12,7 +12,7 @@
 	// 	console.log(data);
 	// 	boards = data;
 	// });
-
+	import { dev } from '$app/environment';
 	console.log(`${data.VERCEL_URL}:${dev ? 5175 : 4173}/api/boards`);
 </script>
 
