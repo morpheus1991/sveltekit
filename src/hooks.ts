@@ -2,7 +2,7 @@
 export async function handle({ request, resolve }) {
 	const cookies = request.headers.cookie || '';
 	const session = cookies.split(';').find((cookie) => cookie.trim().startsWith('session='));
-
+	console.log('handlehandlehandle');
 	// If the cookie was not found, continue as normal
 	if (!session) {
 		return await resolve(request);
