@@ -14,7 +14,7 @@
 
 	console.log('data', data);
 
-	$baseUrl = `https://${data.deploymentGitBranch.VERCEL_URL}:${dev ? 5175 : 4173}`;
+	$baseUrl = `https://${data.deploymentGitBranch.VERCEL_URL}:${dev ? 5175 : ''}`;
 
 	console.log(`$baseUrl`, $baseUrl);
 	console.log('data.deploymentGitBranch', data.deploymentGitBranch);
