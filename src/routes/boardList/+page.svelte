@@ -5,7 +5,7 @@
 	/** @type {import('./$types').LayoutServerData} */
 	export let data;
 
-	console.log('board List data 테스트', data.);
+	console.log('board List data 테스트', data.VERCEL_URL);
 	let boards = [];
 	onMount(async () => {
 		const data = await getBoards(data.VERCEL_URL);
