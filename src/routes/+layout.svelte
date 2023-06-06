@@ -14,9 +14,9 @@
 
 	console.log('data', data);
 
-	$baseUrl = `https://${data.deploymentGitBranch.VERCEL_URL}:${dev ? 5175 : ''}`;
+	const baseUrl = `https://${data.deploymentGitBranch.VERCEL_URL}:${dev ? 5175 : ''}`;
 
-	console.log(`$baseUrl`, $baseUrl);
+	console.log(`baseUrl`, baseUrl);
 	console.log('data.deploymentGitBranch', data.deploymentGitBranch);
 	console.log('testUrl', testUrl);
 	console.log('process.env.BASE_URL', process.env.BASE_URL);
@@ -34,7 +34,7 @@
 	}
 
 	const userFetcher = async (user: UserInfo) => {
-		fetch(`${$baseUrl}/api/user`, {
+		fetch(`${baseUrl}/api/user`, {
 			method: 'POST', // 요청 메소드 설정
 			headers: {
 				'Content-Type': 'application/json' // 컨텐츠 타입 헤더 설정
@@ -52,7 +52,10 @@
 			.catch((error) => console.error('Error:', error)); // 에러가 발생하면 콘솔에 출력합니다.
 	};
 	supabaseBrowserClient.auth.onAuthStateChange(async (event, supabaseSession) => {
-		await handleSession(event, supabaseSession, `${$baseUrl}/api/cookie`);
+		console.log('event', event);
+		console.log('supabaseSession', supabaseSession);
+		console.log('event', event);
+		await handleSession(event, supabaseSession, `${baseUrl}/api/cookie`);
 		if (event === 'SIGNED_OUT') {
 			console.log('SIGNED_OUT');
 			// $session = null;
