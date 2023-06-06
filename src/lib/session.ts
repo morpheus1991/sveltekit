@@ -17,6 +17,7 @@ const getCookieValue = (cookieName: string) => {
 
 const initSession = (): SessionContext => {
 	const existingSession = getCookieValue('sb-access-token');
+	console.log('existingSession', existingSession);
 	const sessionContext = { session: writable<UserInfo | null>(existingSession || null) };
 	setContext(keys.session, sessionContext);
 	return sessionContext;
