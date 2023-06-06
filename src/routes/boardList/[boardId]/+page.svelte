@@ -2,14 +2,13 @@
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
 	import { getBoards } from '../../../service/board';
-	/** @type {import('./$types').LayoutServerData} */
-	export let data;
-	console.log('data.deploymentGitBranch.VERCEL_URL', data.deploymentGitBranch.VERCEL_URL);
+	import { envStore } from '../../../stores';
+
 	const boardId = $page.params.boardId;
 	let board;
 
 	onMount(async () => {
-		board = await getBoards(data.deploymentGitBranch.VERCEL_URL, boardId);
+		board = await getBoards($envStore, boardId);
 		console.log('board', board);
 	});
 </script>

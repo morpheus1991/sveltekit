@@ -28,7 +28,7 @@
 	$session = $page.data.user;
 
 	const userFetcher = async (user: UserInfo) => {
-		fetch(`${process.env.VITE_VERCEL_URL}:${dev ? 5175 : 4173}/api/user`, {
+		fetch(`${$envStore}/api/user`, {
 			method: 'POST', // 요청 메소드 설정
 			headers: {
 				'Content-Type': 'application/json' // 컨텐츠 타입 헤더 설정
