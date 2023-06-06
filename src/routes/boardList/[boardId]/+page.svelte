@@ -9,14 +9,14 @@
 
 	console.log('board List data', data);
 
-	const boardId = $page.params.boardId;
-	console.log('baseUrl boardList', baseUrl);
-	let board;
+	// const boardId = $page.params.boardId;
+	// console.log('baseUrl boardList', baseUrl);
+	// let board;
 
-	onMount(async () => {
-		board = await getBoards($baseUrl, boardId);
-		console.log('board', board);
-	});
+	// onMount(async () => {
+	// 	board = await getBoards($baseUrl, boardId);
+	// 	console.log('board', board);
+	// });
 </script>
 
 {#if board}
