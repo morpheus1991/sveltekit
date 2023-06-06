@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { getBoards } from '../../service/board';
+	// import { onMount } from 'svelte';
+	// import { getBoards } from '../../service/board';
 
 	/** @type {import('./$types').LayoutServerData} */
 	export let data;
