@@ -1,5 +1,5 @@
 <script lang="ts">
-	// import { onMount } from 'svelte';
+	import { onMount } from 'svelte';
 	// import { getBoards } from '../../service/board';
 
 	/** @type {import('./$types').LayoutServerData} */
