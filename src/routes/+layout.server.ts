@@ -4,20 +4,11 @@
 // 		user
 // 	};
 // };
-// import { env } from '$env/dynamic/private';
-
-// /** @type {import('./$types').LayoutServerLoad} */
-// export function load() {
-// 	return {
-// 		deploymentGitBranch: env
-// 	};
-// }
-
-import { PUBLIC_VITE_VERCEL_URL } from '$env/static/public';
+import { env } from '$env/dynamic/private';
 
 /** @type {import('./$types').LayoutServerLoad} */
 export function load() {
 	return {
-		deploymentGitBranch: PUBLIC_VITE_VERCEL_URL
+		deploymentGitBranch: env
 	};
 }
