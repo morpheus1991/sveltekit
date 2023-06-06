@@ -5,12 +5,18 @@
 	import { baseUrl } from '../../stores';
 	const { session } = getSession();
 	// const COLLECTION= mongo.collection('users')
+
+	/** @type {import('./$types').LayoutServerData} */
+	export let data;
+
+	console.log('data', data);
+	const baseUrl = `https://${data.deploymentGitBranch.VERCEL_URL}`;
 </script>
 
 <button
 	style="margin-top: 12px;"
 	on:click={() => {
-		signIn('google', $baseUrl);
+		signIn('google', baseUrl);
 		// COLLECTION.insertOne({$session})
 		console.log('session', $session);
 		// fetch()
