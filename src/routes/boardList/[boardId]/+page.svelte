@@ -4,6 +4,11 @@
 	import { getBoards } from '../../../service/board';
 	import { baseUrl } from '../../../stores';
 
+	/** @type {import('./$types').LayoutServerData} */
+	export let data;
+
+	console.log('board List data', data);
+
 	const boardId = $page.params.boardId;
 	console.log('baseUrl boardList', baseUrl);
 	let board;
