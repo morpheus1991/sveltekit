@@ -3,6 +3,19 @@
 import { createSupabaseServerClient } from '$lib/supabase';
 
 export const handle = async ({ event, resolve }) => {
+	if (event.url.pathname.startsWith('/api')) {
+		// Required for CORS to work
+		if (event.request.method === 'OPTIONS') {
+			return new Response(null, {
+				headers: {
+					'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+					'Access-Control-Allow-Origin': '*',
+					'Access-Control-Allow-Headers': '*'
+				}
+			});
+		}
+	}
+
 	const cookieList = ['sb-user', 'sb-access-token', 'sb-refresh-token'];
 	let cookies = {};
 	for (let i = 0; i < cookieList.length; i++) {
@@ -23,6 +36,9 @@ export const handle = async ({ event, resolve }) => {
 	};
 
 	const response = await resolve(event);
+	if (event.url.pathname.startsWith('/api')) {
+		response.headers.append('Access-Control-Allow-Origin', `*`);
+	}
 	return response;
 };
 
