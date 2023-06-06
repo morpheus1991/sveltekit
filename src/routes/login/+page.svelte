@@ -2,7 +2,6 @@
 	import { signIn } from '$lib/supabase';
 	// import mongo from '../../db/mongo';
 	import { getSession } from '$lib/session';
-	import { baseUrl } from '../../stores';
 	const { session } = getSession();
 	// const COLLECTION= mongo.collection('users')
 
@@ -11,6 +10,7 @@
 
 	console.log('data', data);
 	const baseUrl = `https://${data.deploymentGitBranch.VERCEL_URL}`;
+	console.log(baseUrl);
 </script>
 
 <button
