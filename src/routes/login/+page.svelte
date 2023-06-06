@@ -17,5 +17,5 @@
 	style="margin-top: 12px;"
 	on:click={() => {
 		signIn('google', baseUrl);
-	}}>Github Login</button
+	}}>Google Login</button
 >
