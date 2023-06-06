@@ -5,6 +5,7 @@
 	import { baseUrl } from '../../../stores';
 
 	const boardId = $page.params.boardId;
+	console.log('baseUrl boardList', baseUrl);
 	let board;
 
 	onMount(async () => {
