@@ -13,7 +13,7 @@
 	console.log('process.env.BASE_URL', process.env.BASE_URL);
 	console.log('process.env.VERCEL_URL', process.env.VERCEL_URL);
 	console.log('process.env.VITE_VERCEL_URL', process.env.VITE_VERCEL_URL);
-	console.log('pimport.meta.env.VITE_MESSAGE', import.meta.env.VITE_MESSAGE);
+	console.log('pimport.meta.env.VERCEL_URL', import.meta.env.VERCEL_URL);
 
 	const { session } = getSession();
 
