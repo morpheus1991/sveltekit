@@ -3,8 +3,8 @@
 	import { dev } from '$app/environment';
 	import { baseUrl } from '../stores';
 
-	const { session } = getSession();
-	$session = session;
+	// const { session } = getSession();
+	// $session = session;
 	// const clickHandler = () => {
 	// 	console.log($session);
 	// 	fetch(`${$baseUrl}/boards`, {
