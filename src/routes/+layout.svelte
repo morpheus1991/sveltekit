@@ -7,14 +7,14 @@
 	import type { UserInfo, UserWrapperInfo } from '$lib/models/user';
 	import { testUrl } from '../constants';
 	import { writable } from 'svelte/store';
-	import { envStore } from '../stores';
+	import { baseUrl } from '../stores';
 
 	/** @type {import('./$types').LayoutServerData} */
 	export let data;
 
-	$envStore = `https://${data.deploymentGitBranch.VERCEL_URL}:${dev ? 5175 : 4173}`;
+	$baseUrl = `https://${data.deploymentGitBranch.VERCEL_URL}:${dev ? 5175 : 4173}`;
 
-	console.log(`$envStore`, $envStore);
+	console.log(`$baseUrl`, $baseUrl);
 	console.log('data.deploymentGitBranch', data.deploymentGitBranch);
 	console.log('testUrl', testUrl);
 	console.log('process.env.BASE_URL', process.env.BASE_URL);
@@ -28,7 +28,7 @@
 	$session = $page.data.user;
 
 	const userFetcher = async (user: UserInfo) => {
-		fetch(`${$envStore}/api/user`, {
+		fetch(`${$baseUrl}/api/user`, {
 			method: 'POST', // 요청 메소드 설정
 			headers: {
 				'Content-Type': 'application/json' // 컨텐츠 타입 헤더 설정
@@ -46,7 +46,7 @@
 			.catch((error) => console.error('Error:', error)); // 에러가 발생하면 콘솔에 출력합니다.
 	};
 	supabaseBrowserClient.auth.onAuthStateChange(async (event, supabaseSession) => {
-		await handleSession(event, supabaseSession, `${$envStore}/api/cookie`);
+		await handleSession(event, supabaseSession, `${$baseUrl}/api/cookie`);
 		if (event === 'SIGNED_OUT') {
 			console.log('SIGNED_OUT');
 			$session = null;

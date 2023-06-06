@@ -1,12 +1,12 @@
 <script>
 	import { getSession } from '$lib/session';
 	import { dev } from '$app/environment';
-	import { envStore } from '../stores';
+	import { baseUrl } from '../stores';
 
 	const { session } = getSession();
 	const clickHandler = () => {
 		console.log($session);
-		fetch(`${$envStore}/boards`, {
+		fetch(`${$baseUrl}/boards`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json' // 컨텐츠 타입 헤더 설정

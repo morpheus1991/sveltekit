@@ -2,13 +2,13 @@
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
 	import { getBoards } from '../../../service/board';
-	import { envStore } from '../../../stores';
+	import { baseUrl } from '../../../stores';
 
 	const boardId = $page.params.boardId;
 	let board;
 
 	onMount(async () => {
-		board = await getBoards($envStore, boardId);
+		board = await getBoards($baseUrl, boardId);
 		console.log('board', board);
 	});
 </script>

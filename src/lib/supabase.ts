@@ -1,7 +1,7 @@
 import { createClient, SupabaseClient, type Provider } from '@supabase/supabase-js';
 import { PUBLIC_SUPABASE_ANON_KEY, PUBLIC_SUPABASE_URL } from '$env/static/public';
 import { dev } from '$app/environment';
-import { envStore } from '../stores';
+import { baseUrl } from '../stores';
 
 export const supabaseBrowserClient = createClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY);
 
