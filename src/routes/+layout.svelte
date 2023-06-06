@@ -55,12 +55,17 @@
 		await handleSession(event, supabaseSession, `${$baseUrl}/api/cookie`);
 		if (event === 'SIGNED_OUT') {
 			console.log('SIGNED_OUT');
-			$session = null;
+			// $session = null;
 			// goto('/');
 		}
 		if (!supabaseSession) return;
 		if (event === 'SIGNED_IN') {
+			console.log('SIGNED_IN');
 			$session = supabaseSession.user as unknown as UserInfo;
+			console.log('$session', $session);
+
+			console.log('userFetcher call');
+
 			userFetcher(supabaseSession.user as unknown as UserInfo);
 			// goto('/');
 		}
