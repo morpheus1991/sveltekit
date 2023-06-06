@@ -29,6 +29,10 @@
 	/* hydrate the store on data refresh */
 	$session = $page.data.user;
 
+	$: {
+		console.log('세션 변경댐', $session);
+	}
+
 	const userFetcher = async (user: UserInfo) => {
 		fetch(`${$baseUrl}/api/user`, {
 			method: 'POST', // 요청 메소드 설정
