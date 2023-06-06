@@ -2,23 +2,21 @@
 	import { onMount } from 'svelte';
 	import { getBoards } from '../../service/board';
 
-	/** @type {import('./$types').LayoutServerData} */
-	export let data;
+	export let baseUrl: string = '';
 
-	console.log('board List data 테스트', data.VERCEL_URL);
-	// let boards = [];
-	// onMount(async () => {
-	// 	const data = await getBoards(data.VERCEL_URL);
-	// 	console.log(data);
-	// 	boards = data;
-	// });
-	import { dev } from '$app/environment';
-	console.log(`${data.VERCEL_URL}:${dev ? 5175 : 4173}/api/boards`);
+	console.log('board List data 테스트', baseUrl);
+	let boards = [];
+	onMount(async () => {
+		const data = await getBoards(baseUrl);
+		console.log(data);
+		boards = data;
+	});
+
+	console.log(`${baseUrl}/api/boards`);
 </script>
 
-<!-- 
 {#each boards as board}
 	<div>{board._id}</div>
-{/each} -->
+{/each}
 
 <a href="./boardList/add">글쓰기</a>
