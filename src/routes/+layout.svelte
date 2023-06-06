@@ -7,13 +7,14 @@
 	import type { UserInfo, UserWrapperInfo } from '$lib/models/user';
 	import { testUrl } from '../constants';
 	import { writable } from 'svelte/store';
+	import { envStore } from '../stores';
 
 	/** @type {import('./$types').LayoutServerData} */
 	export let data;
 
-	const envStore = writable({});
 	$envStore = `https://${data.deploymentGitBranch.VERCEL_URL}:${dev ? 5175 : 4173}`;
 
+	console.log(`$envStore`, $envStore);
 	console.log('data.deploymentGitBranch', data.deploymentGitBranch);
 	console.log('testUrl', testUrl);
 	console.log('process.env.BASE_URL', process.env.BASE_URL);
