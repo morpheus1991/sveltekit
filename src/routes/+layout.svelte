@@ -13,11 +13,11 @@
 
 	const baseUrl = `https://${data.deploymentGitBranch.VERCEL_URL}:${dev ? 5175 : ''}`;
 
-	const { session } = getSession();
+	// const { session } = getSession();
 
 	/* hydrate the store on data refresh */
 	if ($page.data.user) {
-		$session = $page.data.user;
+		// $session = $page.data.user;
 	}
 
 	const userFetcher = async (user: UserInfo) => {
@@ -62,7 +62,8 @@
 
 <nav style="border: solid; border-width: 0 0 2px; padding-bottom: 5px;">
 	<a href="/">Home</a>
-	{#if $session}
+	{#if true}
+		<!-- {#if $session} -->
 		<a href="/app">App</a>
 		<a href="/admin">Admin</a>
 		<a href="/boardList">board</a>
