@@ -14,8 +14,7 @@
 
 	const baseUrl = `https://${data.deploymentGitBranch.VERCEL_URL}:${dev ? 5175 : ''}`;
 
-	const { session } = getSession();
-
+	getSession();
 	onMount(() => {});
 	/* hydrate the store on data refresh */
 	if ($page.data.user) {
