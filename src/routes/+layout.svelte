@@ -13,6 +13,8 @@
 	console.log('process.env.BASE_URL', process.env.BASE_URL);
 	console.log('process.env.VERCEL_URL', process.env.VERCEL_URL);
 	console.log('process.env.VITE_VERCEL_URL', process.env.VITE_VERCEL_URL);
+	console.log('pimport.meta.env.VITE_MESSAGE', import.meta.env.VITE_MESSAGE);
+
 	const { session } = getSession();
 
 	/* hydrate the store on data refresh */
