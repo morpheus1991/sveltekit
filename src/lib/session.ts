@@ -25,7 +25,8 @@ const initSession = (): SessionContext => {
 
 export const getSession = (): SessionContext => {
 	console.log('getSession', hasContext(keys.session));
-	return hasContext(keys.session) ? getContext<SessionContext>(keys.session) : initSession();
+	initSession();
+	// return hasContext(keys.session) ? getContext<SessionContext>(keys.session) : initSession();
 };
 
 export const handleSession = async (
