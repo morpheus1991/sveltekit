@@ -2,7 +2,7 @@ import { dev } from '$app/environment';
 import type { BoardCreateBody } from '$lib/models/board';
 import { json } from '@sveltejs/kit';
 
-export const getBoards = async (url, id?: string) => {
+export const getBoards = async (url: string, id?: string) => {
 	const endPoint = id
 		? `${url}:${dev ? 5175 : 4173}/api/boards/${id}`
 		: `${url}:${dev ? 5175 : 4173}/api/boards`;
