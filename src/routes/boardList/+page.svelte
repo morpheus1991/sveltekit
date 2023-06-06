@@ -12,7 +12,7 @@
 	console.log(baseUrl);
 	onMount(async () => {
 		const data = await getBoards(baseUrl);
-		console.log(data);
+		console.log('boards', data);
 		boards = data;
 	});
 
