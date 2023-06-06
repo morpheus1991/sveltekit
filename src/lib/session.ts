@@ -9,24 +9,15 @@ interface SessionContext {
 
 const keys = { session: Symbol() };
 
-const getCookieValue = (cookieName: string) => {
-	const cookies = typeof window === 'undefined' ? '' : document.cookie;
-	const cookie = cookies.split(';').find((cookie) => cookie.trim().startsWith(`${cookieName}=`));
-	return cookie ? cookie.split('=')[1] : null;
-};
-
 const initSession = (): SessionContext => {
-	const existingSession = getCookieValue('sb-access-token');
-	console.log('existingSession', existingSession);
-	const sessionContext = { session: writable<UserInfo | null>(existingSession || null) };
+	const sessionContext = { session: writable<UserInfo | null>(null) }; // You may replace unknown with your session type
 	setContext(keys.session, sessionContext);
 	return sessionContext;
 };
 
 export const getSession = (): SessionContext => {
 	console.log('getSession', hasContext(keys.session));
-	initSession();
-	// return hasContext(keys.session) ? getContext<SessionContext>(keys.session) : initSession();
+	return hasContext(keys.session) ? getContext<SessionContext>(keys.session) : initSession();
 };
 
 export const handleSession = async (

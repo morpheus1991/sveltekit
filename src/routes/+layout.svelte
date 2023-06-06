@@ -5,6 +5,7 @@
 	import { page } from '$app/stores';
 	import { dev } from '$app/environment';
 	import type { UserInfo, UserWrapperInfo } from '$lib/models/user';
+	import { onMount } from 'svelte/types/runtime/internal/lifecycle';
 
 	/** @type {import('./$types').LayoutServerData} */
 	export let data;
@@ -13,12 +14,11 @@
 
 	const baseUrl = `https://${data.deploymentGitBranch.VERCEL_URL}:${dev ? 5175 : ''}`;
 
-	// const { session } = getSession();
+	const { session } = getSession();
 
+	onMount(() => {});
 	/* hydrate the store on data refresh */
-	if ($page.data.user) {
-		// $session = $page.data.user;
-	}
+	$session = $page.data.user;
 
 	const userFetcher = async (user: UserInfo) => {
 		fetch(`${baseUrl}/api/user`, {
@@ -62,8 +62,7 @@
 
 <nav style="border: solid; border-width: 0 0 2px; padding-bottom: 5px;">
 	<a href="/">Home</a>
-	{#if true}
-		<!-- {#if $session} -->
+	{#if $session}
 		<a href="/app">App</a>
 		<a href="/admin">Admin</a>
 		<a href="/boardList">board</a>
