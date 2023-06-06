@@ -5,7 +5,7 @@
 	/** @type {import('./$types').LayoutServerData} */
 	export let data;
 
-	console.log('board List data', data);
+	console.log('board List data 테스트', data);
 	// let boards = [];
 	// onMount(async () => {
 	// 	const data = await getBoards();
