@@ -1,7 +1,15 @@
 // hooks.ts
 export async function handle({ request, resolve }) {
-	const cookies = request.headers.cookie || '';
-	const session = cookies.split(';').find((cookie) => cookie.trim().startsWith('sb-'));
+	const cookies = document.cookie;
+
+	const refreshToken = cookies
+		.split(';')
+		.find((cookie) => cookie.trim().startsWith('sb-refresh-token='));
+	const accessToken = cookies
+		.split(';')
+		.find((cookie) => cookie.trim().startsWith('sb-access-token='));
+	const refreshTokenValue = refreshToken ? refreshToken.split('=')[1] : null;
+	const accessTokenValue = accessToken ? accessToken.split('=')[1] : null;
 	console.log('handlehandlehandle');
 	// If the cookie was not found, continue as normal
 	if (!session) {

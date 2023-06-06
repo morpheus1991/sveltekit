@@ -9,8 +9,15 @@ interface SessionContext {
 
 const keys = { session: Symbol() };
 
+const getCookieValue = (cookieName: string) => {
+	const cookies = typeof window === 'undefined' ? '' : document.cookie;
+	const cookie = cookies.split(';').find((cookie) => cookie.trim().startsWith(`${cookieName}=`));
+	return cookie ? cookie.split('=')[1] : null;
+};
+
 const initSession = (): SessionContext => {
-	const sessionContext = { session: writable<UserInfo | null>(null) }; // You may replace unknown with your session type
+	const existingSession = getCookieValue('sb-access-token');
+	const sessionContext = { session: writable<UserInfo | null>(existingSession || null) };
 	setContext(keys.session, sessionContext);
 	return sessionContext;
 };
