@@ -1,11 +1,13 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { getBoards } from '../../service/board';
+	/** @type {import('./$types').LayoutServerData} */
+	export let data;
 
-	export let baseUrl: string = '';
-
-	console.log('board List data 테스트', baseUrl);
+	console.log('data', data);
 	let boards = [];
+
+	const baseUrl = `https://${data.deploymentGitBranch.VERCEL_URL}:${dev ? 5175 : 4173}`;
 	onMount(async () => {
 		const data = await getBoards(baseUrl);
 		console.log(data);

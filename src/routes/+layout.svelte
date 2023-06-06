@@ -88,4 +88,4 @@
 	{/if}
 </nav>
 
-<slot baseUrl={`https://${data.deploymentGitBranch.VERCEL_URL}:${dev ? 5175 : 4173}`} />
+<slot />
