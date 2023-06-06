@@ -30,7 +30,8 @@ export const handleSession = async (
 		try {
 			await fetch(api, {
 				method,
-				body
+				body,
+				credentials: 'include'
 			});
 		} catch (err) {
 			console.error('set cookie error', err);
