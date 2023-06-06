@@ -10,7 +10,7 @@ export const POST = async ({ cookies, request }) => {
 		const cookie_options = {
 			maxAge: 7200,
 			path: '/',
-			sameSite: 'strict'
+			sameSite: '*'
 		};
 		const response = new Response(null);
 
